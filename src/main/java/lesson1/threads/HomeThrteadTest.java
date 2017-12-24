@@ -13,10 +13,21 @@ public class HomeThrteadTest {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Thread thread1 = new Thread(HomeThrteadTest::printString);
-        Thread thread2 = new Thread(HomeThrteadTest::printString);
-        thread1.start();
-        thread2.start();
+        HomeThrteadTest homeThrteadTest = new HomeThrteadTest();
+
+        Thread thread3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                homeThrteadTest.printString();
+            }
+        });
+
+        Thread thread2 = new Thread(() -> homeThrteadTest.printString());
+        Thread thread1 = new Thread(homeThrteadTest::printString);
+
+//        thread1.start();
+//        thread2.start();
+        thread3.start();
 
 //        for (int k = 0; k < 10000; k++) {
 //            Thread thread1 = new Thread(HomeThrteadTest::incrementInt);
@@ -44,7 +55,7 @@ public class HomeThrteadTest {
         l++;
     }
 
-    private static void printString() {
+    private void printString() {
         System.out.println("Enter too class:");
         lock.lock();
             for (int v = 0; v < 10; v++) {
