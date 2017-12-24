@@ -1,14 +1,14 @@
 package lesson2.model;
 
-
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @ToString
-public class User {
+public class Role {
 
     private int id;
     private String name;
-    private String skills;
 }
